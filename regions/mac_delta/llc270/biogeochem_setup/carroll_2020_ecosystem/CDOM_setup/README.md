@@ -42,7 +42,8 @@ The Ecosystem simulated contains llc270 global ecosystem (see Carroll et al 2020
 ### Linking Inputs/Setup Files to Run Directory 
 (Notes from Bri)
 Some of the files are in a slightly different place than in the git repo instructions so here are new ones that I am trying...
-'''
+
+```
 cd ../run
 mkdir diags diags/daily diags/budget
 -- Link to the executable --
@@ -67,4 +68,4 @@ ln -sf /../../Forcing/run_template/* .
 ln -sf /../../Forcing/run_template/eta_adjust/OBWu_Mac_46x68.balance .
 -- Copy setup files -- 
 cp ../../input/* .
-'''
+```
