@@ -37,3 +37,34 @@ The Ecosystem simulated contains llc270 global ecosystem (see Carroll et al 2020
 |9. rDOC | 20. O2   | 31. Chl3 |
 |10. DON | 21. CDOM | 32. Chl4 |
 |11. DOP | 22. c1   | 32. Chl5 |
+
+
+### Linking Inputs/Setup Files to Run Directory 
+(Notes from Bri)
+Some of the files are in a slightly different place than in the git repo instructions so here are new ones that I am trying...
+'''
+cd ../run
+mkdir diags diags/daily diags/budget
+-- Link to the executable --
+ln -sf ../build/mitgcmuv .
+-- Link to atmospheric forcing --
+ln -sf ../../Forcing/era_xx .
+-- Link to Freswater runnoff --
+ln -sf /../../Forcing/river_runoff/Freswater/AGRO_interan .
+ln -sf /../../Forcing/river_runoff/Temperature/Tokuda_Mac270modif .
+-- Link to Biogeochemical runoff --
+ln -sf /../../Forcing/river_runoff/Nutrients/Bertin_etal_21/Interannual/r46/L50_R48_C2/tDOCl .
+ln -sf /../../Forcing/river_runoff/Nutrients/Bertin_etal_21/Interannual/r46/L50_R48_C2/tDOCr .
+#ln -sf /../../Forcing/river_runoff/Nutrients/Bertin_etal_21/Interannual/L50_R48_C2/tDOCc . # Does not exist on Earthdata
+ln -sf /../../Forcing/river_runoff/Nutrients/Tank_etal_12/Interannual/r46/tAlk .
+ln -sf /../../Forcing/river_runoff/Nutrients/Tank_etal_12/Interannual/r46/tDIC .
+ln -sf /../../Forcing/river_runoff/Nutrients/GNW2_NutCim/r46/tDON .
+ln -sf /../../Forcing/river_runoff/Nutrients/GNW2_NutCim/r46/tDOP .
+ln -sf /../../Forcing/river_runoff/Nutrients/GNW2_NutCim/r46/tDSi .
+-- Link to Initial and Boundary conditions -- 
+ln -sf /../../Forcing/run_template/* .
+#ln -sf /../../Forcing/run_template/eta_adjust/OBWu_Mac_46x68.bal_ROFF OBWu_Mac_46x68.balance # OG but OBWu_Mac_46x68.bal_ROFF is not on Earthdata
+ln -sf /../../Forcing/run_template/eta_adjust/OBWu_Mac_46x68.balance .
+-- Copy setup files -- 
+cp ../../input/* .
+'''
