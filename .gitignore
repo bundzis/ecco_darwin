@@ -36,3 +36,9 @@ core
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Directories with Model Inputs/Outputs #
+regions/mac_delta/llc270/biogeochem_setup/carroll_2020_ecosystem/ED-SBS_Bertin_etal_2023/darwin3_v67x/*/
+regions/mac_delta/llc270/biogeochem_setup/carroll_2020_ecosystem/ED-SBS_Bertin_etal_2023/Forcing/*/
+regions/mac_delta/llc270/biogeochem_setup/carroll_2020_ecosystem/CDOM_setup/darwin3/*/
+regions/mac_delta/llc270/biogeochem_setup/carroll_2020_ecosystem/CDOM_setup/Forcing/*/
