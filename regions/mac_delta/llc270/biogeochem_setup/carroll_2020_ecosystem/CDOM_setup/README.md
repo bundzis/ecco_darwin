@@ -43,6 +43,57 @@ The Ecosystem simulated contains llc270 global ecosystem (see Carroll et al 2020
 (Notes from Bri)
 Some of the files are in a slightly different place than in the git repo instructions so here are new ones that I am trying...
 
+New Locations for downloads on EarthData:
+- 
+
+New commdands for linking 
+```
+-- Link to the executable --
+ln -sf ../build/mitgcmuv .
+-- Link to Atmospheric forcing --
+ln -sf ../../../ED-SBS_Bertin_etal_2023/Forcing/era_xx .
+-- Link to Freshwater runoff --
+ln -sf ../../Forcing/river_runoff/Freshwater/AGRO_interan .
+ln -sf ../../Forcing/river_runoff/Temperature/Tokuda_Mac270modif .
+-- Link to Biogeochemical runoff --
+ln -sf ../../Forcing/river_runoff/Nutrients/CDOM_setup/L50_R48_C2/tDOCl
+ln -sf ../../Forcing/river_runoff/Nutrients/CDOM_setup/L50_R48_C2/tDOCr
+ln -sf ../../Forcing/river_runoff/Nutrients/CDOM_setup/L50_R48_C2/tDOCc
+ln -sf ../../Forcing/river_runoff/Nutrients/CDOM_setup/Tank_DIC/tAlk .
+ln -sf ../../Forcing/river_runoff/Nutrients/CDOM_setup/Tank_DIC/tDIC .
+ln -sf ../../Forcing/river_runoff/Nutrients/CDOM_setup/AGRO_nutclim/tDON .
+ln -sf ../../Forcing/river_runoff/Nutrients/CDOM_setup/AGRO_nutclim/tDOP .
+ln -sf ../../Forcing/river_runoff/Nutrients/CDOM_setup/AGRO_nutclim/tDSi .
+-- Link to Initial and Boundary Conditions --
+ln -sf ../../Forcing/ED-SBSv3/* 
+ln -sf ../../Forcing/ED-SBSv3/eta_adjust/OBWu_Mac_46x68.bal_ROFF OBWu_Mac_46x68.balance
+-- Copy Setup files --
+cp ../../input/* .
+```
+
+Run the code 
+```
+mpirun --oversubscribe -np 8 ./mitgcmuv &
+```
+Errors and fixes from Running 
+- 'filename: Tokuda_ED-SBS/wattmp_mac270modif_2007.data does not exist'
+  - Fix: Renamed Tokuda_Mac270modif linked folder to Tokuda_ED_SBS
+    - Nope
+  - Made copy of original in Forcing and called it Tokuda_ED-SBS then linked it in run directory 
+    - ln -sf ../../Forcing/river_runoff/Temperature/Tokuda_ED-SBS .
+    - I think that worked?
+- New error but no clear message, just a crash and fortran errors: 
+      "Program received signal SIGSEGV: Segmentation fault - invalid memory reference.
+
+      Backtrace for this error:
+
+      Could not print backtrace: executable file is not an executable"
+  - Trying new run command `/opt/local/bin/mpirun-openmpi-gcc14 --oversubscribe -np 8 ./mitgcmuv`
+    - That did not work
+
+
+
+Original commands for linking 
 ```
 cd ../run
 mkdir diags diags/daily diags/budget
